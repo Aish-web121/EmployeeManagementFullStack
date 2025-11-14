@@ -1,6 +1,10 @@
 import axios from 'axios';
 
-const API_URL = 'https://employee-management-app-gdm5.onrender.com/api/employees';
+// Automatically use local backend if running locally, otherwise use deployed URL
+const API_URL =
+  window.location.hostname === 'localhost'
+    ? 'http://localhost:8080/api/employees'
+    : 'https://employee-management-app-gdm5.onrender.com/api/employees';
 
 // Get all employees
 export const getAllEmployees = async () => {
@@ -9,13 +13,13 @@ export const getAllEmployees = async () => {
 };
 
 // Get employee by ID
-export const getEmployeeById = async id => {
+export const getEmployeeById = async (id) => {
   const response = await axios.get(`${API_URL}/${id}`);
   return response.data;
 };
 
 // Add a new employee
-export const addEmployee = async employee => {
+export const addEmployee = async (employee) => {
   const response = await axios.post(API_URL, employee);
   return response.data;
 };
@@ -27,6 +31,7 @@ export const updateEmployee = async (id, employee) => {
 };
 
 // Delete an employee
-export const deleteEmployee = async id => {
+export const deleteEmployee = async (id) => {
   await axios.delete(`${API_URL}/${id}`);
 };
+
