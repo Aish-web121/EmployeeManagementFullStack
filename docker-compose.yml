@@ -5,7 +5,7 @@ services:
     build:
       context: ./backend
     ports:
-      - "8080:8080"
+      - "5000:5000"
     environment:
       - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/employee_management
       - SPRING_DATASOURCE_USERNAME=root
@@ -17,7 +17,7 @@ services:
       mongodb:
         condition: service_healthy
     healthcheck:
-      test: ["CMD-SHELL", "curl -f http://localhost:8080/actuator/health || exit 1"]
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/actuator/health || exit 1"]
       interval: 30s
       timeout: 10s
       retries: 5
@@ -29,6 +29,8 @@ services:
       - "3000:80"
     depends_on:
       - backend
+    environment:
+      - REACT_APP_BACKEND_URL=http://YOUR_ELASTIC_IP:5000
 
   mysql:
     image: mysql:8.0
