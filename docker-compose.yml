@@ -30,7 +30,7 @@ services:
     depends_on:
       - backend
     environment:
-      - REACT_APP_BACKEND_URL=http://YOUR_ELASTIC_IP:5000
+      - REACT_APP_BACKEND_URL=http://34.225.31.33:5000/api
 
   mysql:
     image: mysql:8.0
