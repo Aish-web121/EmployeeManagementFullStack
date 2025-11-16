@@ -1,10 +1,6 @@
 import axios from 'axios';
 
-// Automatically use local backend if running locally, otherwise use deployed URL
-const API_URL =
-  window.location.hostname === 'localhost'
-    ? 'http://localhost:8080/api/employees'
-    : 'https://employee-management-app-gdm5.onrender.com/api/employees';
+const API_URL = 'http://34.225.31.33:5000/api/employees';
 
 // Get all employees
 export const getAllEmployees = async () => {
@@ -34,4 +30,3 @@ export const updateEmployee = async (id, employee) => {
 export const deleteEmployee = async (id) => {
   await axios.delete(`${API_URL}/${id}`);
 };
-
