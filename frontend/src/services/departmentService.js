@@ -1,10 +1,6 @@
 import axios from 'axios';
 
-const isDocker = window.location.hostname === 'localhost' ? false : true;
-
-const API_URL = isDocker
-  ? 'http://backend:8080/api/departments' // backend service name in docker-compose.yml
-  : 'http://localhost:8080/api/departments';
+const API_URL = 'http://34.225.31.33:5000/api/departments';
 
 // Get all departments
 export const getAllDepartments = async () => {
